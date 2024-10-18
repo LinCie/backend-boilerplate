@@ -1,5 +1,5 @@
 {
-  "name": "haebot-backend",
+  "name": "backend-boilerplate",
   "module": "server.ts",
   "type": "module",
   "devDependencies": {
