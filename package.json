@@ -5,7 +5,8 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
-    "@types/express": "^5.0.0"
+    "@types/express": "^5.0.0",
+    "prettier": "3.3.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -18,5 +19,8 @@
     "class-validator": "^0.14.1",
     "express": "^4.21.1",
     "reflect-metadata": "^0.2.2"
+  },
+  "scripts": {
+    "format": "bun prettier . --write"
   }
 }

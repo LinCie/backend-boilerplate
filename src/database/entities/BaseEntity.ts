@@ -3,8 +3,8 @@ import {
   PrimaryKey,
   Property,
   SerializedPrimaryKey,
-} from '@mikro-orm/core';
-import { ObjectId } from '@mikro-orm/mongodb';
+} from "@mikro-orm/core";
+import { ObjectId } from "@mikro-orm/mongodb";
 
 @Entity()
 export class BaseEntity {
