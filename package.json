@@ -6,6 +6,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
     "prettier": "3.3.3"
   },
   "peerDependencies": {
@@ -23,6 +24,6 @@
   },
   "scripts": {
     "format": "bun prettier . --write",
-    "dev": "bun --watch server.ts"
+    "dev": "NODE_ENV=development bun --watch server.ts"
   }
 }
