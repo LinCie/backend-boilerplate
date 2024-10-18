@@ -21,6 +21,7 @@
     "reflect-metadata": "^0.2.2"
   },
   "scripts": {
-    "format": "bun prettier . --write"
+    "format": "bun prettier . --write",
+    "dev": "bun server.ts"
   }
 }
