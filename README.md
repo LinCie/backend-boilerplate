@@ -1,4 +1,6 @@
-# haebot-backend
+# backend boilerplate
+
+This is my personal boilerplate for future backend projects. It is currently under development and should not be used by anyone professionally.
 
 To install dependencies:
 
