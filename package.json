@@ -12,6 +12,9 @@
   "dependencies": {
     "@mikro-orm/core": "^6.3.13",
     "@mikro-orm/mongodb": "^6.3.13",
-    "express": "^4.21.1"
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "express": "^4.21.1",
+    "reflect-metadata": "^0.2.2"
   }
 }
