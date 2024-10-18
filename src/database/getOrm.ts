@@ -1,6 +1,6 @@
 import { MikroORM } from "@mikro-orm/mongodb";
 
-export default function getOrm() {
+export function getOrm() {
   return MikroORM.init({
     dbName: Bun.env.NODE_ENV,
     clientUrl: Bun.env.MONGODB,
