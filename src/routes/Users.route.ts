@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import { plainToInstance } from "class-transformer";
 import { validate } from "class-validator";
 import { Router } from "express";
-import { User } from "../database/entities/Users.entity";
+import { User } from "../database/entities/User.entity";
 import { getEm } from "../database/getEm";
 import { CreateUserDto } from "../dtos/users/create-user.dto";
 import { UpdateUserDto } from "../dtos/users/update-user.dto";
