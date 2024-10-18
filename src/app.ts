@@ -3,6 +3,7 @@ import morgan from "morgan";
 
 import userRoute from "./routes/Users.route";
 import helmet from "helmet";
+import cors from "cors";
 
 const app = express();
 
@@ -12,6 +13,7 @@ if (Bun.env.NODE_ENV === "production") {
   app.use(morgan("dev"));
 }
 
+app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
