@@ -22,6 +22,6 @@
   },
   "scripts": {
     "format": "bun prettier . --write",
-    "dev": "bun server.ts"
+    "dev": "bun --watch server.ts"
   }
 }
