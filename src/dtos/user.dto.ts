@@ -1,7 +1,14 @@
-import { IsOptional, IsString, Matches, MinLength } from "class-validator";
+import {
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Matches,
+  MinLength,
+} from "class-validator";
 
-export class UpdateUserDto {
-  @IsOptional()
+export class UserDto {
+  @IsNotEmpty({ groups: ["create"] })
+  @IsOptional({ groups: ["update"] })
   @IsString()
   @MinLength(3)
   @Matches(/^\S*$/, {
@@ -9,7 +16,8 @@ export class UpdateUserDto {
   })
   readonly username?: string;
 
-  @IsOptional()
+  @IsNotEmpty({ groups: ["create"] })
+  @IsOptional({ groups: ["update"] })
   @IsString()
   @MinLength(8)
   @Matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}/, {
