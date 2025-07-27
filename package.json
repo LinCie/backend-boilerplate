@@ -1,0 +1,41 @@
+{
+  "name": "haebot-landing-backend",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "prettier": "^3.5.3",
+    "prisma": "^6.12.0",
+    "typescript-eslint": "^8.34.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.12.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0",
+    "zod": "^3.25.64"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development bun --watch run index.ts | pino-pretty",
+    "start": "NODE_ENV=production ./server | pino-pretty",
+    "test": "NODE_ENV=test vitest",
+    "test:server": "NODE_ENV=test bun --watch run index.ts | pino-pretty",
+    "build": "bun build --compile --minify --sourcemap index.ts --outfile server",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate",
+    "prisma:studio": "prisma studio"
+  }
+}
