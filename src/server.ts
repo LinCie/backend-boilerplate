@@ -7,6 +7,8 @@ import { FRONTEND_URL } from "@/configs/env.config"
 import { errorMiddleware } from "@/middlewares/error.middleware"
 import { logger } from "@/utilities/logger.utility"
 
+import { AuthController } from "./modules"
+
 const app = express()
 
 // Before request middlewares
@@ -30,6 +32,7 @@ app
   .get("/", (req, res) => {
     res.send("Hello World!")
   })
+  .use("/auth", new AuthController().router)
 
 // After request middlewares
 app.use(errorMiddleware)
