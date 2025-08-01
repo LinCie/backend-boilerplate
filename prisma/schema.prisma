@@ -13,3 +13,13 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id       String @id @default(dbgenerated()) @db.VarChar(27)
+  username String @unique
+  hash     String
+
+  email String? @unique
+
+  createdAt DateTime @default(now())
+}

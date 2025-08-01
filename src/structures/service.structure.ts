@@ -1,7 +1,9 @@
-import { PrismaClient } from "../../generated/prisma"
+import { prisma } from "@/database/prisma"
+import { redis } from "@/database/redis"
 
 abstract class Service {
-  public readonly prisma = new PrismaClient()
+  protected readonly prisma = prisma
+  protected readonly redis = redis
 }
 
 export { Service }
