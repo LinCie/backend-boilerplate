@@ -1,14 +1,14 @@
-import type { NextFunction, Request, Response } from "express";
-import { ZodError } from "zod";
-import { logger } from "@/utilities/logger.utility";
-import { NODE_ENV } from "@/configs/env.config";
+import type { NextFunction, Request, Response } from "express"
+import { ZodError } from "zod"
+import { logger } from "@/utilities/logger.utility"
+import { NODE_ENV } from "@/configs/env.config"
 import {
   BadRequestError,
   ForbiddenError,
   NotFoundError,
   UnauthorizedError,
   UniqueConstraintError,
-} from "@/structures/error.structure";
+} from "@/structures/error.structure"
 
 function errorMiddleware(
   err: unknown,
@@ -17,14 +17,15 @@ function errorMiddleware(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ) {
-  // Log all errors. In a production environment, you might want to use
-  logger.error(err);
+  // Log all errors
+  logger.error(err)
 
   if (err instanceof ZodError) {
-    return res.status(400).send({
+    res.status(400).send({
       message: "Validation failed",
       errors: err.flatten().fieldErrors,
-    });
+    })
+    return
   }
 
   const customErrors = [
@@ -33,25 +34,29 @@ function errorMiddleware(
     { ErrorClass: UnauthorizedError, statusCode: 401 },
     { ErrorClass: ForbiddenError, statusCode: 403 },
     { ErrorClass: UniqueConstraintError, statusCode: 409 },
-  ];
+  ]
 
   for (const customError of customErrors) {
     if (err instanceof customError.ErrorClass && err instanceof Error) {
-      return res.status(customError.statusCode).send({ message: err.message });
+      res.status(customError.statusCode).send({ message: err.message })
+      return
     }
   }
 
   // For other errors, hide details in production
   if (NODE_ENV === "production") {
-    return res.status(500).send({ message: "Internal Server Error" });
+    res.status(500).send({ message: "Internal Server Error" })
+    return
   }
 
   // In development, provide more details
   if (err instanceof Error) {
-    return res.status(500).send({ message: err.message, stack: err.stack });
+    res.status(500).send({ message: err.message, stack: err.stack })
+    return
   }
 
-  return res.status(500).send({ message: "An unknown error occurred" });
+  res.status(500).send({ message: "An unknown error occurred" })
+  return
 }
 
-export { errorMiddleware };
+export { errorMiddleware }
